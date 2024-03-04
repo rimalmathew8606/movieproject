@@ -1,0 +1,27 @@
+
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+  <div class="row">
+        {% for i in mov %}
+          <div class="col-md-4 p-3">
+            <div class="card" style="width: 22rem; height:410px; text-align:justify;line-height:20px;" >
+               <img src="{{ i.image.url }}" alt="{{ i.name }}" class="card-img-top" style="width:auto; height:250px; object-fit: fill;">
+                 <div class="card-body" ><center>
+                   <h5 class="card-title"><b>{{i.name}}</b></h5>
+                   <p class="card-text">Description:{{i.desc}}</p>
+                   <p class="card-text">Year: {{ i.year }}</p>
+
+                   <a href="{% url 'movieshows:viewmovie'%}" class="btn btn-danger shop-now-link width 100 ">Details</a>
+                 </center>
+                 </div>
+               </div>
+            </div>
+
+       {% endfor %}
+  </div>
+</div>
+
+
+{% endblock %}

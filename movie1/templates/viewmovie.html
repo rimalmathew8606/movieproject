@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <center><h1>Movie time</h1>
+    <div class="row">
+        {% for p in mov %}
+        <div class="col-lg-3 col-md-3 col-sm-3" style="width: 300px; height: 100%;">
+            <div class="card">
+                <img src="{{ p.image.url }}" alt="{{ p.name }}" class="card-img-top" style="width:auto; height:300px; object-fit: fill;">
+                <div class="card-body" style="height:200px;">
+                    <h5 class="card-title">{{ p.name }}</h5>
+                    <p class="card-text">Description: {{ p.description }}</p>
+                    <p class="card-text">Year: {{ p.year }}</p>
+                    <a href="{% url 'movieshows:edit' p.id %}" class="btn btn-danger">Update</a>
+                    <a href="{% url 'movieshows:delete' p.id %}" class="btn btn-primary">Delete</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+        </center>
+</div>
+{% endblock %}
